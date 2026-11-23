@@ -101,3 +101,6 @@ h2::after{content:"";display:block;width:44px;height:4px;background:var(--accent
   .site-nav nav{gap:12px}
   .card{padding:18px 16px 14px}
 }
+
+button.btn{font:inherit;cursor:pointer;background:transparent}
+.copy-email{word-break:break-all}

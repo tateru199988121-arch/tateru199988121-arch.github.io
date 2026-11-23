@@ -39,7 +39,7 @@
       <div class="actions">
         <a class="btn primary" href="https://github.com/tateru199988121-arch">GitHub</a>
         <a class="btn" href="https://www.linkedin.com/in/%E8%A6%BA%E8%BC%9D-%E6%B8%B8-8871b5451/">LinkedIn</a>
-        <a class="btn" href="mailto:tateru199988121@gmail.com">Email</a>
+        <button type="button" class="btn copy-email" data-email="tateru199988121@gmail.com" aria-label="複製 Email 地址">tateru199988121@gmail.com　複製</button>
         <a class="btn" href="resume.pdf">履歷 PDF</a>
       </div>
     </div>
@@ -196,5 +196,16 @@
 <footer class="site-footer">
   <div class="wrap">© 2026 游覺輝 Tateru Yu</div>
 </footer>
+<script>
+document.querySelectorAll('.copy-email').forEach(function(b){
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var e=b.dataset.email;
+    function done(ok){b.textContent=ok?'已複製 ✓':e;setTimeout(function(){b.textContent=label},1800);}
+    if(navigator.clipboard){navigator.clipboard.writeText(e).then(function(){done(true)},function(){done(false)});}
+    else{done(false);}
+  });
+});
+</script>
 </body>
 </html>

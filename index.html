@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>游覺輝 Tateru Yu｜AI 應用工程師</title>
+<meta name="description" content="游覺輝：半導體設備工程背景，用多 AI 協作把需求做成可測試、可驗收的 LLM 工具。作品：PartPilot、會議待辦抽取、費用報銷稽核、NQ 交易紀律日誌、麻將有帳。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="游覺輝 Tateru Yu｜AI 應用工程師">
+<meta property="og:description" content="半導體設備工程背景，用多 AI 協作把需求做成可測試、可驗收的 LLM 工具。">
+<meta property="og:url" content="https://tateru199988121-arch.github.io/">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#works">跳到作品</a>
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">游覺輝</a>
+    <nav aria-label="頁面導覽">
+      <a href="#works">作品</a>
+      <a href="#method">做法</a>
+      <a href="#skills">技能</a>
+      <a href="#contact">聯絡</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <p class="eyebrow">AI 應用工程師／AI Agent 工程師</p>
+      <h1 id="hero-title">游覺輝 <span class="en">Tateru Yu</span></h1>
+      <p class="lead">半導體設備工程背景，用多 AI 協作把需求做成可測試、可驗收的 LLM 工具。</p>
+      <p class="loc">新北市</p>
+      <div class="actions">
+        <a class="btn primary" href="https://github.com/tateru199988121-arch">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/%E8%A6%BA%E8%BC%9D-%E6%B8%B8-8871b5451/">LinkedIn</a>
+        <a class="btn" href="mailto:tateru199988121@gmail.com">Email</a>
+        <a class="btn" href="resume.pdf">履歷 PDF</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section" aria-labelledby="about-title">
+    <div class="wrap narrow">
+      <h2 id="about-title">關於我</h2>
+      <p>我是國立東華大學物理系畢業，現任南亞科技薄膜設備工程師，負責 DRAM 製程薄膜設備的日常維護與異常處理。</p>
+      <p>下班後都在用 AI 做東西：過去一年以 AI 工具協作開發，完成多個上線的 Web 應用與 3 個公開的 LLM 作品。我希望把這份興趣變成職業，投入 AI 應用工程，把製造現場的問題做成可用、可檢查的工具。</p>
+      <p class="honest">程式主要由 AI 產生，我負責需求、測試、審查與驗證。</p>
+    </div>
+  </section>
+
+  <section id="works" class="section alt" aria-labelledby="works-title">
+    <div class="wrap">
+      <h2 id="works-title">作品</h2>
+      <p class="sub">文中的分數都是 AI 評審的隱藏測試，非正式成績。</p>
+      <div class="cards">
+
+        <article class="card">
+          <h3>PartPilot</h3>
+          <p class="one">LLM 料件智慧問答 Agent：用自然語言依角色權限查 BOM、庫存、在途與替代料，並試算缺料。</p>
+          <ul>
+            <li>LLM 只負責理解問題與選工具，所有數字由 Python 引擎計算。</li>
+            <li>權限在工具層先過濾，LLM 看不到權限外的資料。</li>
+            <li>提供 CLI、網頁與 Docker 一鍵啟動，另有不需 API key 的 demo 模式。</li>
+          </ul>
+          <p class="tags"><span>Python</span><span>tool calling</span><span>Agent loop</span><span>Docker</span></p>
+          <a class="repo" href="https://github.com/tateru199988121-arch/partpilot">GitHub：partpilot</a>
+        </article>
+
+        <article class="card">
+          <h3>會議待辦抽取工具</h3>
+          <p class="one">用 LLM 從中文會議紀錄抽出待辦、負責人與期限，提供 CLI 與 HTTP API。</p>
+          <ul>
+            <li>LLM 輸出不信任：嚴格驗證 JSON，格式錯就重試；「下週五」這類相對期限由程式換算。</li>
+            <li>含結果快取與並行處理，LLM 包成單一介面，測試用 mock 不需金鑰。</li>
+            <li>157 項隱藏測試通過 156 項（AI 評審的隱藏測試，非正式成績）。</li>
+          </ul>
+          <p class="tags"><span>Python</span><span>pytest</span><span>LLM API</span><span>HTTP API</span></p>
+          <a class="repo" href="https://github.com/tateru199988121-arch/meeting-actions-extractor">GitHub：meeting-actions-extractor</a>
+        </article>
+
+        <article class="card">
+          <h3>費用報銷稽核工具</h3>
+          <p class="one">驗證並去重三份報銷匯出檔，用 LLM 分類費用，換算匯率後找出違規。</p>
+          <ul>
+            <li>LLM 分類失敗時重試，最後改用規則判斷，每筆標明來源。</li>
+            <li>改成串流去重，大檔處理記憶體從 1,453 MB 降到 117 MB。</li>
+            <li>261 項隱藏測試全數通過（AI 評審的隱藏測試，非正式成績）。</li>
+          </ul>
+          <p class="tags"><span>Python</span><span>pytest</span><span>LLM API</span><span>資料清理</span></p>
+          <a class="repo" href="https://github.com/tateru199988121-arch/expense-audit">GitHub：expense-audit</a>
+        </article>
+
+        <article class="card">
+          <h3>NQ 交易紀律日誌</h3>
+          <p class="one">記錄交易前檢查、進出場計畫、實際損益與交易後復盤的個人日誌網站。</p>
+          <ul>
+            <li>提供 6 個 WebMCP 工具，讓 AI 查詢與建立紀錄。</li>
+            <li>四組可編輯的交易策略、交易補登與修改、月曆統計，以及觀看／編輯協作者管理。</li>
+          </ul>
+          <p class="tags"><span>React</span><span>TypeScript</span><span>Cloudflare Workers／D1</span><span>WebMCP</span></p>
+          <a class="repo" href="https://github.com/tateru199988121-arch/nq-entry-journal">GitHub：nq-entry-journal</a>
+        </article>
+
+        <article class="card">
+          <h3>麻將有帳</h3>
+          <p class="one">家人共用的麻將記帳網站，記錄每日輸贏並統計。</p>
+          <ul>
+            <li>家庭編輯碼登入與 HMAC 簽章工作階段。</li>
+            <li>資料版本衝突檢查，避免多人同時更新互相覆蓋；保留修改歷程。</li>
+            <li>單日唯讀分享連結，讓朋友查看結果。</li>
+          </ul>
+          <p class="tags"><span>React</span><span>TypeScript</span><span>Cloudflare Workers／D1</span></p>
+          <a class="repo" href="https://github.com/tateru199988121-arch/mahjong-ledger-family">GitHub：mahjong-ledger-family</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="method" class="section" aria-labelledby="method-title">
+    <div class="wrap">
+      <h2 id="method-title">我的做法：多 AI 協作開發</h2>
+      <p class="sub">我自己設計的流程：先定義需求與完成條件，由 AI 分工實作，再親自審查與驗證。</p>
+      <ol class="flow">
+        <li><span class="who">Claude</span><strong>主管拆任務</strong><span>定完成條件、最後驗收</span></li>
+        <li><span class="who">Codex／Grok</span><strong>員工實作</strong><span>依任務單寫程式與文件</span></li>
+        <li><span class="who">測試</span><strong>先寫測試</strong><span>紅燈 → 綠燈 → 重構</span></li>
+        <li><span class="who">Hook</span><strong>擋下沒過的 commit</strong><span>測試沒過就不能提交</span></li>
+        <li><span class="who">驗收</span><strong>兩次獨立驗收</strong><span>另開全新 AI 對話照 README 從零執行</span></li>
+      </ol>
+      <p class="note">計算、規則、權限交給程式；LLM 只負責理解與組織語言。</p>
+    </div>
+  </section>
+
+  <section id="skills" class="section alt" aria-labelledby="skills-title">
+    <div class="wrap">
+      <h2 id="skills-title">技能</h2>
+      <div class="skill-groups">
+        <div>
+          <h3>AI 協作開發</h3>
+          <p class="tags"><span>Claude Code</span><span>Codex CLI</span><span>Grok 多 AI 分工</span><span>任務單派工與驗收</span><span>Hook 自動化檢查</span></p>
+        </div>
+        <div>
+          <h3>LLM 應用</h3>
+          <p class="tags"><span>Anthropic／OpenAI API</span><span>tool calling</span><span>Agent loop</span><span>WebMCP</span><span>Prompt 設計</span></p>
+        </div>
+        <div>
+          <h3>開發與測試</h3>
+          <p class="tags"><span>Python</span><span>pytest</span><span>Docker</span><span>TypeScript</span><span>React</span><span>Git</span><span>Cloudflare Workers／D1</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section" aria-labelledby="exp-title">
+    <div class="wrap narrow">
+      <h2 id="exp-title">經歷與學歷</h2>
+      <ol class="timeline">
+        <li>
+          <p class="when">2026/11 – 至今</p>
+          <h3>南亞科技｜薄膜設備工程師</h3>
+          <p>負責 DRAM 製程薄膜設備的日常維護與異常處理</p>
+        </li>
+        <li>
+          <p class="when">2026/04 – 2026/09</p>
+          <h3>海可愛工作室｜專案經理</h3>
+          <p>統籌體驗營與展覽活動；以 AI 協作製作工作室網站。</p>
+        </li>
+        <li>
+          <p class="when">2019/09 – 2023/06</p>
+          <h3>國立東華大學｜物理學系 學士</h3>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact" class="section alt" aria-labelledby="contact-title">
+    <div class="wrap narrow">
+      <h2 id="contact-title">聯絡</h2>
+      <p>正在找 AI 應用工程師、AI Agent 工程師的工作，歡迎來信。</p>
+      <ul class="contact">
+        <li><span>Email</span><a href="mailto:tateru199988121@gmail.com">tateru199988121@gmail.com</a></li>
+        <li><span>GitHub</span><a href="https://github.com/tateru199988121-arch">github.com/tateru199988121-arch</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/%E8%A6%BA%E8%BC%9D-%E6%B8%B8-8871b5451/">LinkedIn 個人頁</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">© 2026 游覺輝 Tateru Yu</div>
+</footer>
+</body>
+</html>
